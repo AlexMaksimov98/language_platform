@@ -1,0 +1,12 @@
+<h1>Login</h1>
+<form action="{% url 'login' %}" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+        <p>{{ field.label }}</p>
+        {{ field }}
+        {{ field.errors }}
+    {% endfor %}
+    <input type="submit" value="Login">
+</form>
+<p>Don't have an account yet?</p>
+<a href="{% url 'register' %}">Create a new account</a>

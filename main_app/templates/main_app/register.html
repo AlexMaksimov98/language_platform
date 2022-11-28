@@ -1,0 +1,10 @@
+<h1>Create a new account</h1>
+<form action="{% url 'register' %}" method='POST'>
+    {% csrf_token %}
+    {% for field in form %}
+        <p>{{ field.label }}</p>
+        {{ field }}
+        {{ field.errors }}
+    {% endfor %}
+    <input type='submit' value='Complete the registration'>
+</form>
