@@ -1,0 +1,14 @@
+<form method="post">
+    {% csrf_token %}
+    <h1>{{ sentence }} {{ form.correct_answer }}</h1>
+    {% if not message %}
+        <h1>{{ score }} / {{ length }}</h1>
+        <button name="next">Next</button>
+        <button name="check_answer">Check your answer</button>
+        <button name="finish">Finish the quiz</button>
+    {% elif message == 'You have just completed the test' %}
+        <h2>{{ message }}</h2>
+        <h1>{{ score }} / {{ length }}</h1>
+        <button name="return_homepage">Back to the main page</button>
+    {% endif %}
+</form>

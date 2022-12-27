@@ -1,0 +1,13 @@
+{% if message %}
+    <h1>{{ message }}. Your result is {{ score }} / {{ length }}</h1>
+    <button>
+        <a href={% url 'all-cases' %}>Go back to the homepage</a>
+    </button>
+{% else %}
+<a href={% url 'homepage' %}>Back</a>
+<ul>
+    {% for case in cases %}
+        <li><a href="{% url 'case' slug=case.slug %}">{{ case }}</a></li>
+    {% endfor %}
+</ul>
+{% endif %}

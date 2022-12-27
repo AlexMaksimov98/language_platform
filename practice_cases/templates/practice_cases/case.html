@@ -1,0 +1,6 @@
+<a href={% url 'all-cases' %}>Back</a>
+<ul>
+{% for topic in topics %}
+    <li><a href="{% url 'exercise' slug_topic=topic.cases.slug slug_exercise=topic.slug %}">{{ topic }}</a></li>
+{% endfor %}
+</ul>
