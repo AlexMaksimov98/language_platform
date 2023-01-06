@@ -9,19 +9,26 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <h1 class="title">Hello, {{ user.username | title }}</h1>
+        <div class="title">
+            <h1>Hello, {{ user.username | title }}</h1>
+            <h2>What would you like to do today?</h2>
         <div class="option-buttons">
             <button class="btn btn-primary">
                 <a href="{% url 'all-cases' %}">Practice cases</a>
             </button>
         </div>
     {% else %}
-        <h1>Hello!</h1>
-        <button class="btn btn-primary">
-            <a href="{% url 'login' %}">Login</a>
-        </button>
-        <button class="btn btn-primary">
-            <a href="{% url 'register' %}">Create a new account</a>
-        </button>
+        <section id="greeting">
+            <h1>Hello!</h1>
+            <button class="btn btn-primary">
+                <a href="{% url 'login' %}">Login</a>
+            </button>
+            <button class="btn btn-primary">
+                <a href="{% url 'register' %}">Create a new account</a>
+            </button>
+        </section>
+        <section id="about">
+            <h1>About</h1>
+        </section>
     {% endif %}
 {% endblock %}  

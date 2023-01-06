@@ -25,14 +25,6 @@
     margin: 0;
 }
 
-.green input {
-    background-color: green;
-}
-
-.red input {
-    background-color: red;
-}
-
 #correct_answer {
     outline: 0;
     border-width: 0 0 2px;

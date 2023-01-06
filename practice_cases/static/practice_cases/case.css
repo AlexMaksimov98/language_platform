@@ -6,6 +6,11 @@ button a:hover {
 .topics-list {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     gap: 1.5rem;
     align-items: center;
+}
+
+.topics-list button {
+    width: 20%;
 }

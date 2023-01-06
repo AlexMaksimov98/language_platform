@@ -1,17 +1,25 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %} Case {% endblock %}
 
+{% block css_file %}
+    <link rel="stylesheet" href={% static 'main_app/login.css' %}>
+{% endblock %}
+
 {% block content %}
-    <h1>Login</h1>
-    <form action="{% url 'login' %}" method="POST">
-        {% csrf_token %}
-        {% for field in form %}
-            <p>{{ field.label }}</p>
-            {{ field }}
-        {% endfor %}
-        <input type="submit" value="Login">
-    </form>
-    <p>Don't have an account yet?</p>
-    <a href="{% url 'register' %}">Create a new account</a>
+    <div class="title">
+        <h1>Login</h1>
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                <p>{{ field.label }}</p>
+                {{ field }}
+            {% endfor %}
+            <br>
+            <button class="btn btn-primary" type="submit" value="Login">Log in</button>
+        </form>
+        <p>Don't have an account yet?</p>
+        <a href="{% url 'register' %}">Create a new account</a>
+    </div>
 {% endblock%}

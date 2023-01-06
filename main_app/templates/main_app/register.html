@@ -1,17 +1,24 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %} Create an account {% endblock %}
 
+{% block css_file %}
+    <link rel="stylesheet" href={% static 'main_app/register.css' %}>
+{% endblock %}
+
 {% block content %}
-    <h1>Create a new account</h1>
-    <form action="{% url 'register' %}" method='POST'>
-        {% csrf_token %}
-        {% for field in form %}
-            <p>{{ field.label }}</p>
-            {{ field }}
-            {{ field.errors }}
-        {% endfor %}
-        <br>
-        <input type='submit' value='Complete the registration'>
-    </form>
+    <div class="title">
+        <h1>Create a new account</h1>
+        <form action="{% url 'register' %}" method='POST'>
+            {% csrf_token %}
+            {% for field in form %}
+                <p>{{ field.label }}</p>
+                {{ field }}
+                {{ field.errors }}
+            {% endfor %}
+            <br>
+            <button type='submit' value='Complete the registration' class="btn btn-primary">Complete</button>
+        </form>
+    </div>
 {% endblock %}

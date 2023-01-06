@@ -1,3 +1,22 @@
+#greeting {
+    padding-top: 10%;
+    text-align: center;
+    height: 100vh;
+}
+
+#greeting button {
+    margin-top: 1.5rem;
+}
+
+#about {
+    padding-top: 3%;
+}
+
+#about {
+    border-top: 2px solid #0275d8;
+    text-align: center;
+}
+
 .title {
     text-align: center;
     padding-top: 10%;
