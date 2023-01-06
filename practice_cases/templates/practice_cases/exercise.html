@@ -1,14 +1,55 @@
-<form method="post">
-    {% csrf_token %}
-    <h1>{{ sentence }} {{ form.correct_answer }}</h1>
-    {% if not message %}
-        <h1>{{ score }} / {{ length }}</h1>
-        <button name="next">Next</button>
-        <button name="check_answer">Check your answer</button>
-        <button name="finish">Finish the quiz</button>
-    {% elif message == 'You have just completed the test' %}
-        <h2>{{ message }}</h2>
-        <h1>{{ score }} / {{ length }}</h1>
-        <button name="return_homepage">Back to the main page</button>
-    {% endif %}
-</form>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ topic_name }} {% endblock %}
+
+{% block css_file %}
+    <link rel="stylesheet" href="{% static 'practice_cases/exercise.css' %}">
+{% endblock %}
+
+{% block content %}
+    <script>
+
+        function translateSentence() {
+            let translation = document.getElementById('translate')
+            translation.classList.remove('hidden');
+        };
+
+        function check() {
+            let correctAnswer = '{{ correct_answer }}';
+            let givenAnswer = document.getElementById('correct_answer').value;
+            let exerciseForm = document.getElementById('form');
+            let form = document.getElementById('correct_answer');
+
+            if (givenAnswer == correctAnswer) {
+                exerciseForm.style.backgroundColor = 'rgb(76, 234, 76)';
+                form.style.backgroundColor = 'rgb(76, 234, 76)';
+            } else if (givenAnswer != correctAnswer) {
+                exerciseForm.style.backgroundColor = 'rgb(245, 69, 69)';
+                form.style.backgroundColor = 'rgb(245, 69, 69)';
+            }        
+        };
+    </script>
+    <div class="exercise-form">
+        <form method="post" id="form"> 
+            {% csrf_token %}
+            {% if not message %}
+                <h1>{{ score }} / {{ length }}</h1>
+                <p>{{ sentence }} {{ form.correct_answer }} {% if second_part %} {{ second_part }} {% endif %} {% if initial_form %} ({{ initial_form }}) {% endif %}</p>
+                <div class="hidden" id="translate">{{ translation }}</div>
+                <div class="exercise-buttons">
+                    <button class="btn btn-primary" name="next">Next</button>
+                    <button class="btn btn-primary" name="check_answer" onclick="check()">Check your answer</button>
+                    <button class="btn btn-primary" name="finish">Finish the quiz</button>
+                    <button class="btn btn-primary" type="button" onclick="translateSentence()">Translate</button>
+                </div>
+            {% elif message %}
+                <div class="test-is-finished">
+                    <h1>{{ message }}</h1>
+                    <h1>{{ score }} / {{ length }}</h1>
+                    <button name="return_homepage" class="btn btn-primary return">Back to the main page</button>
+                </div>
+            {% endif %}
+        </form>
+    </div>
+{% endblock %}

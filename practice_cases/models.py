@@ -18,8 +18,12 @@ class Topic(models.Model):
 
 class Exercise(models.Model):
     sentence = models.CharField(max_length=200)
-    correct_answer = models.CharField(max_length=10, blank=True)
+    correct_answer = models.CharField(max_length=50, blank=True)
     topic_type = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    initial_form = models.CharField(max_length=100, blank=True)
+    translation = models.CharField(max_length=200, blank=True)
+    second_part = models.CharField(max_length=200, blank=True)
+
 
     def __str__(self):
-        return self.sentence
+        return f'{self.sentence}{self.correct_answer} {self.second_part}'

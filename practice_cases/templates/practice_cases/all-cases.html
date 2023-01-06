@@ -1,13 +1,30 @@
-{% if message %}
-    <h1>{{ message }}. Your result is {{ score }} / {{ length }}</h1>
-    <button>
-        <a href={% url 'all-cases' %}>Go back to the homepage</a>
-    </button>
-{% else %}
-<a href={% url 'homepage' %}>Back</a>
-<ul>
-    {% for case in cases %}
-        <li><a href="{% url 'case' slug=case.slug %}">{{ case }}</a></li>
-    {% endfor %}
-</ul>
-{% endif %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} All cases {% endblock %}
+
+{% block css_file %}
+    <link rel="stylesheet" href={% static 'practice_cases/all-cases.css' %}>
+{% endblock %}
+
+{% block content %}
+    {% if not message %}
+        <button class="back-button btn btn-primary">
+            <a href={% url 'homepage' %}>←</a>
+        </button>
+        <div class="cases-list">
+            {% for case in cases %}
+                <button class="btn btn-primary case-button">
+                    <a href="{% url 'case' slug=case.slug %}">{{ case }}</a>
+                </button>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="test-is-finished">
+            <h3>{{ message }} Your result is {{ score }} / {{ length }}</h3>
+            <button class="btn btn-primary">
+                <a href={% url 'all-cases' %}>Go back to the homepage</a>
+            </button>
+        </div>
+    {% endif %}
+{% endblock %}

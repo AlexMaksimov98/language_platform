@@ -1,0 +1,51 @@
+.exercise-form {
+    padding: 3% 15% ;
+}
+
+.exercise-form h1, p {
+    text-align: center;
+    padding-top: 5%;
+}
+
+.exercise-buttons {
+    padding-top: 3%;
+    text-align: center;
+}
+
+.test-is-finished {
+    text-align: center;
+}
+
+.return {
+    margin-top: 3%;
+}
+
+.hidden {
+    visibility: hidden;
+    margin: 0;
+}
+
+.green input {
+    background-color: green;
+}
+
+.red input {
+    background-color: red;
+}
+
+#correct_answer {
+    outline: 0;
+    border-width: 0 0 2px;
+    width: 6rem; 
+}
+
+#translate {
+    text-align: center;
+    color: rgb(13, 128, 228);
+}
+
+#form {
+    padding: 10% 0;
+    border-radius: 25px;
+    width: auto;
+}

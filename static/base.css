@@ -1,0 +1,9 @@
+button a, a {
+    text-decoration: none;
+    color: white;
+}
+
+.back-button {
+    margin: 3% 0 0 3%;
+    padding: 0.2rem 2rem;
+}

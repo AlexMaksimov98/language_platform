@@ -1,0 +1,23 @@
+button a:hover {
+    color: white;
+}
+
+.cases-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.case-button {
+    width: 10rem;
+    border: 2px black solid;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.test-is-finished {
+    margin: 15%;
+    text-align: center;
+}
+    

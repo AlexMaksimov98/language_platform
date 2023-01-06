@@ -1,6 +1,21 @@
-<a href={% url 'all-cases' %}>Back</a>
-<ul>
-{% for topic in topics %}
-    <li><a href="{% url 'exercise' slug_topic=topic.cases.slug slug_exercise=topic.slug %}">{{ topic }}</a></li>
-{% endfor %}
-</ul>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ case_name }} {% endblock %}
+
+{% block css_file %}
+    <link rel="stylesheet" href={% static 'practice_cases/case.css' %}>
+{% endblock %}
+
+{% block content %}
+    <button class="back-button btn btn-primary  ">
+        <a href={% url 'all-cases' %}>←</a>
+    </button>
+    <div class="topics-list">
+        {% for topic in topics %}
+            <button class="btn btn-primary">
+                <a href="{% url 'exercise' slug_topic=topic.cases.slug slug_exercise=topic.slug %}">{{ topic }}</a></li>
+            </button>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,17 +1,27 @@
-{% if user.is_authenticated %}
-    <h1>Hello, {{ user.username | title }}</h1>
-    <button>
-        <a href="{% url 'logout' %}">Logout</a>
-    </button>
-    <button>
-        <a href="{% url 'all-cases' %}">Practice cases</a>
-    </button>
-{% else %}
-    <h1>Hello!</h1>
-    <button>
-        <a href="{% url 'login' %}">Login</a>
-    </button>
-    <button>
-        <a href="{% url 'register' %}">Create a new account</a>
-    </button>
-{% endif %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Homepage {% endblock %}
+
+{% block css_file %}
+    <link rel="stylesheet" href={% static 'main_app/homepage.css' %}>
+{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <h1 class="title">Hello, {{ user.username | title }}</h1>
+        <div class="option-buttons">
+            <button class="btn btn-primary">
+                <a href="{% url 'all-cases' %}">Practice cases</a>
+            </button>
+        </div>
+    {% else %}
+        <h1>Hello!</h1>
+        <button class="btn btn-primary">
+            <a href="{% url 'login' %}">Login</a>
+        </button>
+        <button class="btn btn-primary">
+            <a href="{% url 'register' %}">Create a new account</a>
+        </button>
+    {% endif %}
+{% endblock %}  
