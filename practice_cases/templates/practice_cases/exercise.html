@@ -9,7 +9,6 @@
 
 {% block content %}
     <script>
-
         function translateSentence() {
             let translation = document.getElementById('translate')
             translation.classList.remove('hidden');
@@ -31,11 +30,17 @@
         };
     </script>
     <div class="exercise-form">
-        <form method="post" id="form"> 
+        <form method="post" autocomplete="off" id="form"> 
             {% csrf_token %}
             {% if not message %}
                 <h1>{{ score }} / {{ length }}</h1>
-                <p>{{ sentence }} {{ form.correct_answer }} {% if second_part %} {{ second_part }} {% endif %} {% if initial_form %} ({{ initial_form }}) {% endif %}</p>
+                {% if sentence and second_part %}
+                    <p>{{ sentence }} {{ form.correct_answer }} {{ second_part }}</p>
+                {% elif sentence and initial_form %}
+                    <p>{{ sentence }} {{ form.correct_answer }} ({{ initial_form }})</p>
+                {% else %}
+                    <p>{{ sentence }} {{ form.correct_answer }}</p>
+                {% endif %}
                 <div class="hidden" id="translate">{{ translation }}</div>
                 <div class="exercise-buttons">
                     <button class="btn btn-primary" name="next">Next</button>

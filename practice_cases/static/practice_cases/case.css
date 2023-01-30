@@ -1,8 +1,3 @@
-button a:hover {
-    color: white;
-}
-
-
 .topics-list {
     display: flex;
     flex-direction: column;
@@ -13,4 +8,9 @@ button a:hover {
 
 .topics-list button {
     width: 20%;
+}
+
+.topics-list button a {
+    color: white;
+    text-decoration: none;
 }
