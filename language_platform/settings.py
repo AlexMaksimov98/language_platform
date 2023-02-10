@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main_app', 
     'practice_cases',
+    'grammar_section'
 ]
 
 MIDDLEWARE = [

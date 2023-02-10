@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {% endblock %}
+
+{% block css_file %}
+    <link rel="stylesheet" href={% static 'grammar_section/theory_section.css' %}>
+{% endblock %}
+
+{% block content %}
+    {% if language_section == 'Verbs' %}
+        <h1>{{ title }}</h1>
+        <p>{{ description }}</p>
+        <li>{{ rule }}</li>
+    {% endif %}
+{% endblock %}

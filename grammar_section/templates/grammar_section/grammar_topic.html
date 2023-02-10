@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {% endblock %}
+
+{% block css_file %}
+    <link rel="stylesheet" href={% static 'grammar_section/grammar_topic.css' %}>
+{% endblock %}
+
+{% block content %}
+    {% for topic in subtopics %}
+        <button class='btn btn-primary'>
+            <a href={% url 'grammar_theory' slug=topic.grammar_section_name.slug topic_name=topic.slug %}>{{ topic }}</a>
+        </button>
+    {% endfor %}
+{% endblock %}
